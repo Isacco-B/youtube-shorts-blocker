@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *, *::before, *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        --color-text-primary: #262626;
+        --color-text-secondary: #737373;
+        --color-divider: #9ca3af;
+        --color-switch-off: #a3a3a3;
+        --color-switch-on: #4ade80;
+        --spacing-base: 16px;
+        --spacing-sm: 12px;
+        --border-radius: 34px;
+      }
+
+      body {
+        width: 400px;
+        min-width: 350px;
+        overflow: hidden;
+        padding: var(--spacing-base);
+        font-family: "Poppins", system-ui, -apple-system, sans-serif;
+        line-height: 1.5;
+        color: var(--color-text-primary);
+      }
+
+      .divider {
+        height: 1px;
+        background-color: var(--color-divider);
+        margin: var(--spacing-base) 0;
+      }
+
+      .header {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-sm);
+      }
+
+      .header__logo {
+        width: 45px;
+        height: 45px;
+        flex-shrink: 0;
+      }
+
+      .header__content {
+        flex-grow: 1;
+      }
+
+      .header__title {
+        font-weight: 600;
+        font-size: 20px;
+      }
+
+      .header__subtitle {
+        font-size: 12px;
+        color: var(--color-text-secondary);
+      }
+
+      .switches {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-sm);
+      }
+
+      .switch-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .switch-item__label {
+        font-size: 16px;
+      }
+
+      .switch {
+        position: relative;
+        display: inline-block;
+        width: 50px;
+        height: 28px;
+      }
+
+      .switch__input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+
+      .switch__slider {
+        position: absolute;
+        inset: 0;
+        background-color: var(--color-switch-off);
+        border-radius: var(--border-radius);
+        cursor: pointer;
+        transition: background-color 0.4s ease;
+      }
+
+      .switch__slider::before {
+        content: "";
+        position: absolute;
+        height: 20px;
+        width: 20px;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        border-radius: 50%;
+        transition: transform 0.4s ease;
+      }
+
+      .switch__input:checked + .switch__slider {
+        background-color: var(--color-switch-on);
+      }
+
+      .switch__input:focus + .switch__slider {
+        box-shadow: 0 0 1px var(--color-switch-on);
+      }
+
+      .switch__input:checked + .switch__slider::before {
+        transform: translateX(20px);
+      }
+
+      .footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .footer__link {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-sm);
+        color: var(--color-text-primary);
+        text-decoration: none;
+        font-size: 12px;
+      }
+
+      .footer__github {
+        width: 18px;
+        height: 18px;
+      }
+
+      .footer__version {
+        font-size: 12px;
+        color: var(--color-text-secondary);
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <img class="header__logo" src="../assets/logo.svg" alt="YouTube Shorts Block logo" />
+      <div class="header__content">
+        <h1 class="header__title">YouTube Shorts Block</h1>
+        <p class="header__subtitle">Say goodbye to distractions and reclaim your focus</p>
+      </div>
+    </header>
+
+    <div class="divider"></div>
+
+    <div class="switches">
+      <div class="switch-item">
+        <p class="switch-item__label">Hide "Shorts" tab</p>
+        <label class="switch">
+          <input class="switch__input" type="checkbox" aria-label="hide shorts tab" id="hideShortsTab"/>
+          <span class="switch__slider"></span>
+        </label>
+      </div>
+      <div class="switch-item">
+        <p class="switch-item__label">Hide shorts video</p>
+        <label class="switch">
+          <input class="switch__input" type="checkbox" aria-label="hide shorts video" id="hideShorts"/>
+          <span class="switch__slider"></span>
+        </label>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <footer class="footer">
+      <a href="https://github.com/Isacco-B/youtube-shorts-blocker" target="_blank" rel="noopener noreferrer" class="footer__link">
+        <img class="footer__github" src="../assets/github.svg" alt="GitHub repository" />
+        <span>Feedback</span>
+      </a>
+      <p class="footer__version"> v1.0.0</p>
+    </footer>
+  </body>
+</html>
