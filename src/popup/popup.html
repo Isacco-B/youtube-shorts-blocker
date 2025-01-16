@@ -20,6 +20,8 @@
         --color-divider: #9ca3af;
         --color-switch-off: #a3a3a3;
         --color-switch-on: #4ade80;
+        --color-error-bg: #fee2e2;
+        --color-error-text: #dc2626;
         --spacing-base: 16px;
         --spacing-sm: 12px;
         --border-radius: 34px;
@@ -129,6 +131,15 @@
         transform: translateX(20px);
       }
 
+      .error {
+        background-color: var(--color-error-bg);
+        border-radius: 10px;
+        padding: var(--spacing-sm);
+        margin: var(--spacing-sm) 0;
+        color: var(--color-error-text);
+        display: none;
+      }
+
       .footer {
         display: flex;
         justify-content: space-between;
@@ -159,28 +170,46 @@
     <header class="header">
       <img class="header__logo" src="../assets/logo.svg" alt="YouTube Shorts Block logo" />
       <div class="header__content">
-        <h1 class="header__title">YouTube Shorts Block</h1>
-        <p class="header__subtitle">Say goodbye to distractions and reclaim your focus</p>
+        <h1 class="header__title" id="headerTitle">YouTube Shorts Block</h1>
+        <p class="header__subtitle" id="headerSubtitle">Say goodbye to distractions and reclaim your focus</p>
       </div>
     </header>
 
     <div class="divider"></div>
 
-    <div class="switches">
+    <div class="switches" id="switchesContainer">
       <div class="switch-item">
-        <p class="switch-item__label">Hide "Shorts" tab</p>
+        <p class="switch-item__label" id="labelHideVideo">Hide shorts video</p>
         <label class="switch">
-          <input class="switch__input" type="checkbox" aria-label="hide shorts tab" id="hideShortsTab"/>
+          <input class="switch__input" type="checkbox" aria-label="hide shorts video" id="toggleShorts"/>
           <span class="switch__slider"></span>
         </label>
       </div>
       <div class="switch-item">
-        <p class="switch-item__label">Hide shorts video</p>
+        <p class="switch-item__label" id="labelHideTab">Hide shorts menu</p>
         <label class="switch">
-          <input class="switch__input" type="checkbox" aria-label="hide shorts video" id="hideShorts"/>
+          <input class="switch__input" type="checkbox" aria-label="hide shorts tab" id="toggleShortsTab"/>
           <span class="switch__slider"></span>
         </label>
       </div>
+      <div class="switch-item">
+        <p class="switch-item__label" id="labelHideSearch">Hide shorts in search results</p>
+        <label class="switch">
+          <input class="switch__input" type="checkbox" aria-label="hide shorts search" id="toggleShortsSearch"/>
+          <span class="switch__slider"></span>
+        </label>
+      </div>
+      <div class="switch-item">
+        <p class="switch-item__label" id="labelShortsConverter">Convert shorts to regular videos</p>
+        <label class="switch">
+          <input class="switch__input" type="checkbox" aria-label="convert shorts to video" id="toggleShortsConverter"/>
+          <span class="switch__slider"></span>
+        </label>
+      </div>
+    </div>
+
+    <div class="error" id="errorMessage">
+      You are not on YouTube, this extension only works on YouTube
     </div>
 
     <div class="divider"></div>
@@ -188,9 +217,9 @@
     <footer class="footer">
       <a href="https://github.com/Isacco-B/youtube-shorts-blocker" target="_blank" rel="noopener noreferrer" class="footer__link">
         <img class="footer__github" src="../assets/github.svg" alt="GitHub repository" />
-        <span>Feedback</span>
+        <span>GitHub</span>
       </a>
-      <p class="footer__version"> v1.0.0</p>
+      <p class="footer__version" id="footerVersion"> v1.0.0</p>
     </footer>
   </body>
 </html>
