@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <style>
+      :root {
+        --primary-red: #ff0000;
+        --primary-red-dark: #cc0000;
+        --success-green: #10b981;
+        --success-green-dark: #059669;
+        --gray-light: #f8f9fa;
+        --gray-medium: #e9ecef;
+        --gray-dark: #1a1a1a;
+        --white: #ffffff;
+        --toggle-inactive: #cbd5e1;
+        --toggle-inactive-dark: #94a3b8;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        width: 320px;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          sans-serif;
+      }
+
+      .popup-wrapper {
+        background: var(--white);
+        overflow: hidden;
+      }
+
+      .header {
+        background: linear-gradient(
+          135deg,
+          var(--primary-red) 0%,
+          var(--primary-red-dark) 100%
+        );
+        padding: 28px 24px;
+        text-align: center;
+        position: relative;
+      }
+
+      .header h1 {
+        font-size: 22px;
+        color: var(--white);
+        margin-bottom: 6px;
+        font-weight: 700;
+      }
+
+      .header p {
+        font-size: 13px;
+        color: var(--white);
+        font-weight: 500;
+      }
+
+      .container {
+        padding: 24px;
+        background: var(--white);
+      }
+
+      .container.disabled {
+        opacity: 0.5;
+        pointer-events: none;
+      }
+
+      .toggle-section {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px;
+        background: linear-gradient(
+          135deg,
+          var(--gray-light) 0%,
+          var(--gray-medium) 100%
+        );
+      }
+
+      .toggle-label strong {
+        font-size: 16px;
+        color: var(--gray-dark);
+        font-weight: 600;
+      }
+
+      .switch {
+        position: relative;
+        display: inline-block;
+        width: 60px;
+        height: 32px;
+        flex-shrink: 0;
+      }
+
+      .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+
+      .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+          135deg,
+          var(--toggle-inactive) 0%,
+          var(--toggle-inactive-dark) 100%
+        );
+        transition: 0.4s;
+        border-radius: 32px;
+      }
+
+      .slider:before {
+        position: absolute;
+        content: "";
+        height: 24px;
+        width: 24px;
+        left: 4px;
+        bottom: 4px;
+        background: var(--white);
+        transition: 0.4s;
+        border-radius: 50%;
+      }
+
+      input:checked + .slider {
+        background: linear-gradient(
+          135deg,
+          var(--success-green) 0%,
+          var(--success-green-dark) 100%
+        );
+      }
+
+      input:checked + .slider:before {
+        transform: translateX(28px);
+      }
+
+      input:disabled + .slider {
+        cursor: not-allowed;
+        opacity: 0.5;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="popup-wrapper">
+      <div class="header">
+        <h1>Shorts Blocker</h1>
+        <p>Take back your YouTube experience</p>
+      </div>
+
+      <div class="container">
+        <div class="toggle-section">
+          <div class="toggle-label">
+            <strong>Block Shorts</strong>
+          </div>
+          <label class="switch">
+            <input type="checkbox" id="toggleShorts" />
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <script src="popup.js"></script>
+  </body>
+</html>
