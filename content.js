@@ -14,6 +14,7 @@ function removeShorts() {
     shelf: "ytd-shelf-renderer",
     grid: "ytd-grid-video-renderer",
     compact: "ytd-compact-video-renderer",
+    search: "grid-shelf-view-model",
   };
 
   document.querySelectorAll(selectors.desktop).forEach((element) => {
@@ -29,6 +30,12 @@ function removeShorts() {
   });
 
   document.querySelectorAll(selectors.shorts).forEach((element) => {
+    if (element.querySelector('a[href*="/shorts"]')) {
+      element.remove();
+    }
+  });
+
+  document.querySelectorAll(selectors.search).forEach((element) => {
     if (element.querySelector('a[href*="/shorts"]')) {
       element.remove();
     }
